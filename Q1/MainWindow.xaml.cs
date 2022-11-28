@@ -20,6 +20,10 @@ namespace Q1
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        static List<Expense> expenses = new List<Expense>();
+        static decimal total = 0;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -27,16 +31,41 @@ namespace Q1
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Expense e1 = new Expense() { Category = "Travel", Amount = 19.95em, ExpenseDate = new DateTime(2022, 11, 28) };
-            Expense e2 = new Expense() { Category = "Entertainment", Amount = 27.99em, ExpenseDate = new DateTime(2022, 1, 9) };
-            Expense e3 = new Expense() { Category = "Office", Amount = 50.80em, ExpenseDate = new DateTime(2022, 12, 1) };
+            Expense e1 = new Expense() { Category = "Travel", Amount = 19.95m, ExpenseDate = new DateTime(2022, 11, 28) };
+            Expense e2 = new Expense() { Category = "Entertainment", Amount = 27.99m, ExpenseDate = new DateTime(2022, 1, 9) };
+            Expense e3 = new Expense() { Category = "Office", Amount = 50.80m, ExpenseDate = new DateTime(2022, 12, 1) };
 
-            List<Expense> expenses = new List<Expense>();
             expenses.Add(e1);
             expenses.Add(e2);
             expenses.Add(e3);
 
             lbxExpenses.ItemsSource = expenses;
+
+            foreach (Expense expense in expenses)
+            {
+                total += expense.Amount;
+            }
+
+            PrintTotal();
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime today = DateTime.Today;
+            Random rng = new Random();
+            Expense newExpense = new Expense() { Category = "Other", Amount = (decimal)rng.Next(1, 101), ExpenseDate = new DateTime()};
+
+            expenses.Add(newExpense);
+            lbxExpenses.ItemsSource = null;
+            lbxExpenses.ItemsSource = expenses;
+
+            total += newExpense.Amount;
+            PrintTotal();
+        }
+
+        private void PrintTotal()
+        {
+            tblkTotal.Text = $"{total:c}";
         }
     }
 }
