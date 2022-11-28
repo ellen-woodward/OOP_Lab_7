@@ -51,9 +51,8 @@ namespace Q1
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            DateTime today = DateTime.Today;
             Random rng = new Random();
-            Expense newExpense = new Expense() { Category = "Other", Amount = (decimal)rng.Next(1, 101), ExpenseDate = new DateTime()};
+            Expense newExpense = new Expense() { Category = "Other", Amount = (decimal)rng.Next(1, 101), ExpenseDate = DateTime.Today};
 
             expenses.Add(newExpense);
             lbxExpenses.ItemsSource = null;
