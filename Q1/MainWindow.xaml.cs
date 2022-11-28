@@ -52,7 +52,7 @@ namespace Q1
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             Random rng = new Random();
-            Expense newExpense = new Expense() { Category = "Other", Amount = (decimal)rng.Next(1, 101), ExpenseDate = DateTime.Today};
+            Expense newExpense = new Expense() { Category = "Other", Amount = (decimal)rng.Next(1, 101), ExpenseDate = RandomDay()};
 
             expenses.Add(newExpense);
             lbxExpenses.ItemsSource = null;
@@ -65,6 +65,14 @@ namespace Q1
         private void PrintTotal()
         {
             tblkTotal.Text = $"{total:c}";
+        }
+
+        private DateTime RandomDay()
+        {
+            Random rnd = new Random();
+            DateTime start = new DateTime(2015, 1, 1);
+            int range = (DateTime.Today - start).Days;
+            return start.AddDays(rnd.Next(range));
         }
     }
 }

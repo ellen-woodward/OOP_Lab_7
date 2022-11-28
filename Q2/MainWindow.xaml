@@ -7,6 +7,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <ListBox x:Name="lbxMembers" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="32,66,400,71"/>
+        <ComboBox x:Name="cbxMemberType" HorizontalAlignment="Left" Margin="610,94,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content = "Full" />
+            <ComboBoxItem Content = "Off Peak" />
+            <ComboBoxItem Content = "Student" />
+            <ComboBoxItem Content = "OAP" />
+        </ComboBox>
+        <TextBlock x:Name="tblkNoMembers" Margin="610,361,169,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbxName" HorizontalAlignment="Left" Margin="610,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <DatePicker x:Name="dpkDate" HorizontalAlignment="Left" Margin="610,243,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="679,325,0,0" VerticalAlignment="Top" Width="51" Click="btnAdd_Click"/>
+        <Label Content="Member Type" HorizontalAlignment="Left" Margin="480,90,0,0" VerticalAlignment="Top"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="512,170,0,0" VerticalAlignment="Top"/>
+        <Label Content="Date Joined" HorizontalAlignment="Left" Margin="484,237,0,0" VerticalAlignment="Top"/>
+        <Label Content="Number of members" HorizontalAlignment="Left" Margin="434,356,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tbxWarning" HorizontalAlignment="Left" Margin="191,388,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>
